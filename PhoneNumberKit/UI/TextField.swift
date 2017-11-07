@@ -197,7 +197,10 @@ open class PhoneNumberTextField: UITextField, UITextFieldDelegate {
         guard let text = text else {
             return false
         }
-        
+        //if we are getting suggestions from the autocomplete this is how they will look
+        guard !(text.isEmpty && string == " ") else {
+            return true
+        }
         // allow delegate to intervene
         guard _delegate?.textField?(textField, shouldChangeCharactersIn: range, replacementString: string) ?? true else {
             return false
